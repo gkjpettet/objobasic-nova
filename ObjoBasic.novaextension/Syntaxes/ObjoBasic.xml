@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="objobasic">
+    <meta>
+        <name>ObjoBasic</name>
+        <type>script</type>
+        <preferred-file-extension>objobasic</preferred-file-extension>
+    </meta>
+    
+    <detectors>
+        <extension priority="1.0">objobasic,objo_module,objo_class</extension>
+    </detectors>
+    
+    <indentation>
+        <increase>
+            <expression>(^\s*(case |do |else |elseif |module |for |if .* then\s*$|while ).*)|(^\s*[^\#].*(class |constructor |function |sub ).+)</expression>
+        </increase>
+        <decrease>
+            <expression>(^\s*end\b)|(^\s*else)|(^\s*case\b)|(^\s*loop\b)|(^\s*wend\b)|(^\s*next\b)</expression>
+        </decrease>
+    </indentation>
+    
+    <scopes>
+        <scope name="objobasic.comment">
+            <starts-with>
+                <expression>\#</expression>
+            </starts-with>
+            <ends-with>
+                <expression>$</expression>
+            </ends-with>
+        </scope>
+        
+        <include syntax="self" collection="keywords" />
+        <include syntax="self" collection="values" />
+        <include syntax="self" collection="strings" />
+        <include syntax="self" collection="identifiers" />
+        <include syntax="self" collection="operators" />
+    </scopes>
+    
+    <collections>   
+        <collection name="operators">
+            <scope name="objobasic.operator">
+                <expression>\+|\-|\/|\*|\==|\=|\^|\.</expression>
+            </scope>
+        </collection>
+     
+        <collection name="values">
+            <scope name="objobasic.value.boolean">
+                <strings>
+                    <string>true</string>
+                    <string>false</string>
+                </strings>
+            </scope>
+            
+            <scope name="objobasic.value.number">
+                <expression>(?&lt;=[^\w.]|^)(?=\d+|\d+\.|\.\d+|\d+e(?:\d|\b))((?:\d+_\d+)+|\d+|\d*\.\d*(?:e[-+]?\d*)?|\d+e[-+]?\d*)(?=[^\w.]|$)|(?&lt;=[^\w.]|^)(?:\d+|&amp;h[[:xdigit:]]*\b|&amp;b[01]*\b|&amp;o[01234567]*\b)(?=[^\w.]|$)</expression>
+            </scope>
+        </collection>
+        
+        <collection name="strings">
+            <scope name="objobasic.string">
+                <expression>&quot;.*&quot;</expression>
+            </scope>
+            
+            <scope name="objobasic.string.unicode">
+                <expression>&amp;u[[:xdigit:]]{4}|&amp;U[[:xdigit:]]{8}</expression>
+            </scope>
+        </collection>
+        
+        <collection name="identifiers">           
+            <scope name="objobasic.identifier.method">
+                <expression>\b[a-z][a-zA-Z_0-9]*\(</expression>
+            </scope>
+            
+            <scope name="objobasic.identifier.variable">
+                <expression>[a-z][a-zA-Z_0-9]*</expression>
+            </scope>
+            
+            <scope name="objobasic.identifier.constant">
+                <expression>\b[A-Z][A-Z_0-9]*\b</expression>
+            </scope>
+            
+            <scope name="objobasic.identifier.class">
+                <expression>\b[A-Z][a-zA-Z_0-9]*\b</expression>
+            </scope>
+        </collection>
+    
+        <collection name="keywords">
+            <scope name="objobasic.keyword.construct">
+                <strings>
+                    <string>class</string>
+                    <string>constructor</string>
+                    <string>function</string>
+                    <string>module</string>
+                    <string>sub</string>
+                </strings>
+            </scope>
+            
+            <scope name="objobasic.keyword.condition">
+                <strings>
+                    <string>case</string>
+                    <string>do</string>
+                    <string>else</string>
+                    <string>elseif</string>
+                    <string>for</string>
+                    <string>if</string>
+                    <string>select</string>
+                    <string>while</string>
+                </strings>
+            </scope> 
+            
+            <scope name="objobasic.keyword.modifier">
+                <strings>
+                    <string>private</string>
+                    <string>protected</string>
+                    <string>public</string>
+                </strings>
+            </scope> 
+            
+            <scope name="objobasic.keyword.operator">
+                <strings>
+                    <string>and</string>
+                    <string>or</string>
+                    <string>not</string>
+                    <string>xor</string>
+                </strings>
+            </scope> 
+            
+            <scope name="objobasic.keyword.self">
+                <strings>
+                    <string>self</string>
+                    <string>super</string>
+                </strings>
+            </scope>                    
+            
+            <scope name="objobasic.keyword">
+                <strings>
+                    <string>as</string>
+                    <string>assigns</string>
+                    <string>belongsTo</string>
+                    <string>breakpoint</string>
+                    <string>constant</string>
+                    <string>continue</string>
+                    <string>end</string>
+                    <string>exit</string>
+                    <string>foreign</string>
+                    <string>inherits</string>
+                    <string>is</string>
+                    <string>loop</string>
+                    <string>next</string>
+                    <string>nothing</string>
+                    <string>property</string>
+                    <string>return</string>
+                    <string>static</string>
+                    <string>then</string>
+                    <string>until</string>
+                    <string>var</string>
+                    <string>wend</string>
+                </strings>
+            </scope>
+        </collection>
+    </collections>
+</syntax>

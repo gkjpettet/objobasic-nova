@@ -1,0 +1,189 @@
+# public class Person
+  
+
+
+1 + 2 - 3 * 4 / 5 = 6 == 7 ^ 8 . 9
+
+names.append("Aoife")
+# "Hello world!"
+
+"cool" # Comment
+
+"Hello ""Dude""!" # Comment
+
+# This is "not a string"
+
+# This is a comment
+print("Hello") # Also a comment.
+
+123 # Integer
+42.5 # Double
+2e3 # Scientific notation always becomes a Double
+2e+3
+2e-3
+&hFF # Hex literal (Integer). &h and &H are equivalent.
+&b1001 # Binary literal (Integer). &b and &B are equivalent.
+&o123 # Octal literal (Integer) &o and &O are equivalent.
+
+&u0b83 # ஃ
+&U0001F680 # 🚀
+
+var name as String = "Garry"
+var age as Integer = 42
+var doctor as Boolean = true
+var details as Contact # Functionally identical to `details = Contact()` as the default zero parameter constructor is called.
+var children[] as String = ["Aoife", "Maebh"]
+
+var names[] as String # An empty list.
+# We can specify the starting size of a list by providing the total number of elements:
+# This creates a list of 5 ages, each element defaults to `0`. The last element is at `ages[4]`.
+var ages[5] as Integer
+
+# Retrieve the first element.
+print(names[0])
+
+# Assign to an existing element.
+names[2] = "Garry"
+
+# Append an element.
+names.append("Aoife")
+
+# Remove an element at a specified index.
+names.removeAt(1)
+
+property count as Integer = 0
+constant MY_VERSION as String = "1.0.0"
+
+sub scan()
+  # Implementation.
+end sub
+
+protected function playerCount() as Integer
+# Implementation
+end function
+
+class Player belongsTo Sonos
+  constant VERSION as String = "1.0.0"
+  sub play(songName as String)
+    # Implementation.
+  end sub
+end class
+
+class App inherits Application belongsTo Global
+  function run(arguments[] as String) as Integer
+    # User's implementation
+  end function
+end class
+
+for i as integer = 1 to 10
+  # Loops 10 times (1 to 10 inclusive, stepping 1 each iteration).
+  # i is scoped to the loop.
+end for i
+
+var i as Integer
+for i = 1 to 10
+  # Loops 10 times (1 to 10 inclusive, stepping 1 each iteration).
+  # i is scoped to the enclosing method.
+end for i
+
+for j as Integer = 10 downto 1
+  # Loops 10 times (10 to 1 inclusive, stepping down 1 each iteration).
+end for j
+
+for k as integer = 2 to 10 step 2
+  # Loops 5 times (2, 4, 6, 8, 10, incrementing the loop counter by 2 each iteration).
+end for k
+
+while condition
+  # Executes if condition was true at the start of the loop
+end while
+
+do
+  # Will execute forever unless exited.
+end do
+
+do until condition
+  # Will execute at least once and then continue so long as condition is true.
+end do
+
+while true
+  print("Hello")
+  exit # Will only print once.
+end while
+
+var counter as Integer = 0
+for i as Integer = 1 to 10
+  print("Hello")
+  counter = counter + 1
+  if (counter mod 2) = 0 then continue # Skips even values of i.
+end for i
+
+if condition then
+  # Simple if statement.
+end if
+
+if condition then
+  # Execute if condition is true.
+else
+  # Execute if condition is false.
+end if
+
+if condition1 then
+  # Execute if condition1 is true.
+elseif condition 2 then
+  # Execute if condition2 is true.
+else
+  # Execute if none of the above clauses are true.
+end if
+
+if condition then statement # Single line if statement.
+
+select case value
+case 10, 20
+  # Executes if value = 10 or 20
+case is Integer
+  # Executes if value is an Integer
+case < 10
+  # Executes if value < 10
+case "big" or "small"
+  # Executes if value = "big" or value = "small"
+else
+  # Optional. Executes if none of the above cases are true.
+end select
+
+constant VERSION as String = "1.0.0"
+constant MAX_SIZE as Integer = 100
+
+property count as Integer
+
+function add(a as Number, b as Number) as Number
+  return a + b
+end function
+
+sub greet(who as String)
+  print(who)
+end sub
+
+var answer as Integer = add(1, 2) # 3
+
+class Stack belongsTo Global
+  property items[10] as Integer # A list of 10 integers.
+  
+  function [](index as Integer) as Integer
+    return items[index]
+  end function
+  
+  sub [](index as Integer, assigns value)
+    items[index] = value
+  end sub
+end class
+
+var myStack as Stack
+print(myStack[0]) # Prints the contents of myStack.items[0]
+myStack[5] = 10 # Assigns 10 to myStack.items[5]
+
+class Person belongsTo Global
+end class
+
+class Doctor inherits Person belongsTo Global
+end class

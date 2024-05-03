@@ -1,0 +1,9 @@
+{
+    "identifier": "org.objobasic",
+    "name": "ObjoBasic",
+    "organization": "Garry Pettet",
+    "description": "Language definition for ObjoBasic",
+    "version": "1.0",
+    "categories": ["languages"],
+    "bugs": "https://github.com/gkjpettet/objobasic-nova"
+}
